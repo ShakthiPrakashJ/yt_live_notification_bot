@@ -22,7 +22,8 @@ async def check_youtube():
     global last_video_id
     url = f"https://www.googleapis.com/youtube/v3/search?part=snippet&channelId={CHANNEL_ID}&type=video&eventType=live&key={YOUTUBE_API_KEY}"
     response = requests.get(url)
-
+    channel = bot.get_channel(DISCORD_CHANNEL_ID)
+        await channel.send("Test")
     if response.status_code == 200:
         data = response.json()
         items = data.get("items", [])
